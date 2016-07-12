@@ -28,3 +28,17 @@ a {
   height: 25rem;
   margin: 1rem;
 }
+
+input {
+  width: 40rem;
+  height: 3rem;
+}
+
+.add-book-button {
+  width: 40rem;
+  height: 4rem;
+}
+
+textarea {
+  width: 40rem;
+}
