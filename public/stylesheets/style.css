@@ -20,5 +20,11 @@ a {
 }
 
 .book-display {
+  margin: 10rem;
+}
+
+.book-cover {
+  width: 20rem;
+  height: 25rem;
   margin: 1rem;
 }
