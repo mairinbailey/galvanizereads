@@ -42,6 +42,11 @@ router.get('/:id/editbook', function(req, res, next) {
   });
 });
 
+router.get('/authors', function(req, res, next) {
+  knex('author').select().then(function(authors){
+  res.render('authors', {authors: authors});
+  });
+});
 
 router.post('/addBook', function(req, res, next){
   knex('book').insert(req.body).then(function(){

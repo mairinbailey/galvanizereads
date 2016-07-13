@@ -1,0 +1,19 @@
+{{#each authors}}
+<div class="row author-row">
+  <div class="col-md-offset-2 col-md-2">
+    <img class="author-url" src="{{this.portrait_url}}" alt="portrait_url"/>
+  </div>
+  <div class="col-md-4">
+    <a href="/authors/{{this.id}}">{{this.first_name}} {{this.last_name}}</a>
+    <p>{{this.biography}}</p>
+    <a class="btn btn-default" href="/{{this.id}}/editauthor">Edit</a>
+    <a class="btn btn-default" href="/{{this.id}}/deleteauthor">Delete</a>
+  </div>
+</div>
+{{/each}}
+
+<div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <a class="btn btn-default add-book-button" href="/addbook">Add an Author</a>
+    </div>
+</div>

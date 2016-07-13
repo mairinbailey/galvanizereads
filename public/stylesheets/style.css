@@ -31,6 +31,15 @@ input {
   height: 3rem;
 }
 
+.author-row{
+  height: 40rem;
+}
+
+.author-url {
+  width: 12vw;
+
+}
+
 .add-book-button {
   width: 50rem;
   height: 4rem;
