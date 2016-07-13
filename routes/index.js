@@ -14,23 +14,30 @@ router.get('/books', function(req, res, next) {
   });
 });
 
-router.get('/add', function(req, res, next){
+router.get('/addBook', function(req, res, next){
   res.render('addbook');
 });
 
-router.get('/:id/delete', function(req, res, next) {
+router.get('/:id/deletebook', function(req, res, next) {
   knex('book').where({id: req.params.id}).first().then(function(book) {
     res.render('deletebook', {book: book});
   });
 });
 
-router.get('/:id/confirmDelete', function (req, res, next){
+router.get('/:id/confirmDeleteBook', function (req, res, next){
   knex('book').where({id: req.params.id}).del().then(function() {
   res.redirect('/books');
   });
 });
 
-router.post('/add', function(req, res, next){
+router.get('/:id/editbook', function(req, res, next) {
+  knex('book').where({id: req.params.id}).first().then(function(book) {
+    res.render('editbook', {book: book});
+  });
+});
+
+
+router.post('/addBook', function(req, res, next){
   knex('book').insert(req.body).then(function(){
     res.redirect('/books');
   }).catch(function(err){
@@ -39,5 +46,10 @@ router.post('/add', function(req, res, next){
   });
 });
 
+router.post('/:id/editbook', function(req, res, next) {
+  knex('book').where({id:req.params.id}).update(req.body).then(function(book) {
+    res.redirect('/books');
+  });
+});
 
 module.exports = router;

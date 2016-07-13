@@ -19,9 +19,6 @@ a {
   /*background-color: hsl(194, 5%, 70%)*/
 }
 
-.book-display {
-  margin: 10rem;
-}
 
 .book-cover {
   width: 20rem;
@@ -35,8 +32,11 @@ input {
 }
 
 .add-book-button {
-  width: 40rem;
+  width: 50rem;
   height: 4rem;
+  /*margin: 2rem;
+  padding: 4rem;
+  font-size: 2rem;*/
 }
 
 textarea {
