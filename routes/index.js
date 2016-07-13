@@ -64,6 +64,12 @@ router.get('/:id/confirmDeleteAuthor', function (req, res, next){
   });
 });
 
+router.get('/:id/editauthor', function(req, res, next) {
+  knex('author').where({id: req.params.id}).first().then(function(author) {
+    res.render('editauthor', {author: author});
+  });
+});
+
 router.post('/addBook', function(req, res, next){
   knex('book').insert(req.body).then(function(){
     res.redirect('/books');
@@ -85,6 +91,12 @@ router.post('/addAuthor', function(req, res, next){
   }).catch(function(err){
     console.log(err);
     next(err)
+  });
+});
+
+router.post('/:id/editauthor', function(req, res, next) {
+  knex('author').where({id:req.params.id}).update(req.body).then(function(book) {
+    res.redirect('/authors');
   });
 });
 

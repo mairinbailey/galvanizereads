@@ -1,0 +1,30 @@
+
+<div class="row">
+  <div class="col-md-offset-4 col-md-10 col-xs-12">
+    <form action="/{{author.id}}/editauthor" method="post">
+      <h1>Edit an Author</h1>
+
+      <label for="first_name">First Name</label>
+      <div class="form-group">
+        <input id="first_name" type="text" name="first_name" value={{author.first_name}}>
+      </div>
+
+      <label for="last_name">Last Name</label>
+      <div class="form-group">
+        <input id="last_name" type="text" name="last_name" value={{author.last_name}}>
+      </div>
+
+      <label for="biography">Biography</label>
+      <div class="form-group">
+        <textarea id= "biography" name="biography" rows="8" cols="40">{{author.biography}}</textarea>
+      </div>
+
+      <label for="portrait_url">Portrait URL</label>
+      <div class="form-group">
+        <input id="portrait_url" type="text" name="portrait_url" value={{author.portrait_url}}>
+      </div>
+
+      <button class="add-book-button" type="submit">Update Author</button>
+    </form>
+  </div>
+</div>
