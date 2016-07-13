@@ -4,7 +4,7 @@
     <img class="book-cover" src="{{this.cover_url}}" alt="cover_url"/>
   </div>
   <div class="col-md-4">
-    <h3>{{this.title}}</h3>
+    <a href="/books/{{this.id}}">{{this.title}}</a>
     <p>{{this.genre}}</p>
     <h5>{{this.description}}</h5>
     <a class="btn btn-default" href="/{{this.id}}/editbook">Edit</a>

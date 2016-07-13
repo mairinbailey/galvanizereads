@@ -14,6 +14,12 @@ router.get('/books', function(req, res, next) {
   });
 });
 
+router.get('/books/:id', function(req, res, next) {
+  knex('book').where({id: req.params.id}).first().then(function(book) {
+    res.render('bookdetail', {book: book});
+  });
+});
+
 router.get('/addBook', function(req, res, next){
   res.render('addbook');
 });

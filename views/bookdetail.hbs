@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-2   col-xs-12">
+    <img class="book-cover" src="{{book.cover_url}}" alt="cover_url"/>
+  </div>
+    <div class="col-md-4">
+      <h3>{{book.title}}</h3>
+      <p>{{book.genre}}</p>
+      <h5>{{book.description}}</h5>
+      <a class="btn btn-default" href="/{{book.id}}/editbook">Edit</a>
+      <a class="btn btn-default" href="/{{book.id}}/confirmDeleteBook">Delete</a>
+  </div>
+</div>
