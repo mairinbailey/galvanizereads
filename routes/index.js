@@ -48,6 +48,10 @@ router.get('/authors', function(req, res, next) {
   });
 });
 
+router.get('/addAuthor', function(req, res, next){
+  res.render('addauthor');
+});
+
 router.post('/addBook', function(req, res, next){
   knex('book').insert(req.body).then(function(){
     res.redirect('/books');
@@ -60,6 +64,15 @@ router.post('/addBook', function(req, res, next){
 router.post('/:id/editbook', function(req, res, next) {
   knex('book').where({id:req.params.id}).update(req.body).then(function(book) {
     res.redirect('/books');
+  });
+});
+
+router.post('/addAuthor', function(req, res, next){
+  knex('author').insert(req.body).then(function(){
+    res.redirect('/authors');
+  }).catch(function(err){
+    console.log(err);
+    next(err)
   });
 });
 
