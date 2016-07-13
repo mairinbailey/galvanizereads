@@ -9,13 +9,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/books', function(req, res, next) {
-  knex('book').select().then(function(books){
+  knex('book').join('book_author', 'book_id', 'book.id').join('author', 'author_id', 'author.id').select('book.title', 'book.genre', 'book.description', 'book.cover_url', 'book.id as book_id', 'author.id as author_id', 'author.first_name', 'author.last_name').then(function(books){
   res.render('books', {books: books});
   });
 });
 
 router.get('/books/:id', function(req, res, next) {
-  knex('book').where({id: req.params.id}).first().then(function(book) {
+  knex('book').join('book_author', 'book_id', 'book.id').join('author', 'author_id', 'author.id').select('book.title', 'book.genre', 'book.description', 'book.cover_url', 'book.id as book_id', 'author.id as author_id', 'author.first_name', 'author.last_name').where({
+    book_id: req.params.id}).first().then(function(book){
     res.render('bookdetail', {book: book});
   });
 });
@@ -25,7 +26,8 @@ router.get('/addBook', function(req, res, next){
 });
 
 router.get('/:id/deletebook', function(req, res, next) {
-  knex('book').where({id: req.params.id}).first().then(function(book) {
+  knex('book').join('book_author', 'book_id', 'book.id').join('author', 'author_id', 'author.id').select('book.title', 'book.genre', 'book.description', 'book.cover_url', 'book.id as book_id', 'author.id as author_id', 'author.first_name', 'author.last_name').where({
+    book_id: req.params.id}).first().then(function(book) {
     res.render('deletebook', {book: book});
   });
 });

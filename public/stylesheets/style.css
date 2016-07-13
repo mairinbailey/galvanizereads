@@ -1,12 +1,3 @@
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}*/
-
 .logoimg {
   max-height: 6rem;
   max-width: 6rem;
@@ -17,6 +8,7 @@ a {
   display: flex;
   justify-content: flex-start;
   /*background-color: hsl(194, 5%, 70%)*/
+
 }
 
 
@@ -43,11 +35,48 @@ input {
 .add-book-button {
   width: 50rem;
   height: 4rem;
-  /*margin: 2rem;
-  padding: 4rem;
-  font-size: 2rem;*/
+  margin: 2rem;
+  font-size: 2rem;
+}
+.add-book{
+  width:36rem;
+  height: 4rem;
+  margin: 2rem;
+  font-size: 2rem;
 }
 
 textarea {
   width: 40rem;
+}
+
+.huge-button {
+  width: 50rem;
+  height: 6rem;
+  margin: 3rem;
+}
+
+.glyphicon-book{
+  padding: 1rem;
+}
+
+.glyphicon-user {
+  padding: 1rem;
+}
+
+.glyphicon-pencil{
+  margin-right: .5rem;
+}
+
+.glyphicon-remove{
+  margin-right: .5rem;
+}
+
+.generic-book-img {
+  height: 20rem;
+  margin-left:10rem;
+}
+
+.generic-author-img {
+  height: 20rem;
+  margin-left:20rem;
 }

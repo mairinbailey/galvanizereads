@@ -1,12 +1,21 @@
 <div class="row">
+  <div class="col-md-offset-1 col-md-5 col-xs-12">
+    <a class="btn btn-primary btn-lg huge-button" href="/books">  <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Books</a>
+  </div>
+  <div class="col-md-6 col-xs-12">
+    <a class="btn btn-primary btn-lg huge-button" href="/authors"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Authors</a>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-offset-2 col-md-2   col-xs-12">
     <img class="book-cover" src="{{book.cover_url}}" alt="cover_url"/>
   </div>
     <div class="col-md-4">
       <h3>{{book.title}}</h3>
+      <a href="/authors/{{book.author_id}}">{{book.first_name}} {{book.last_name}}</a>
       <p>{{book.genre}}</p>
       <h5>{{book.description}}</h5>
-      <a class="btn btn-default" href="/{{book.id}}/editbook">Edit</a>
-      <a class="btn btn-default" href="/{{book.id}}/confirmDeleteBook">Delete</a>
+      <a class="btn btn-default" href="/{{book.book_id}}/editbook"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit</a>
+      <a class="btn btn-default" href="/{{book.book_id}}/confirmDeleteBook"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Delete</a>
   </div>
 </div>
