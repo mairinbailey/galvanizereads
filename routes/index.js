@@ -48,6 +48,12 @@ router.get('/authors', function(req, res, next) {
   });
 });
 
+router.get('/authors/:id', function(req, res, next) {
+  knex('author').where({id: req.params.id}).first().then(function(author) {
+    res.render('authordetail', {author: author});
+  });
+});
+
 router.get('/addAuthor', function(req, res, next){
   res.render('addauthor');
 });
