@@ -7,10 +7,8 @@
 .page-header{
   display: flex;
   justify-content: flex-start;
-  /*background-color: hsl(194, 5%, 70%)*/
-
+  width:100vw;
 }
-
 
 .book-cover {
   width: 20rem;

@@ -13,6 +13,8 @@
     <div class="col-md-4">
       <h3>{{author.first_name}} {{author.last_name}}</h3>
       <h5>{{author.biography}}</h5>
+      <a href="/books/{{author.book_id}}">{{author.title}}</a>
+      <br>
       <a class="btn btn-default" href="/{{author.id}}/confirmDeleteAuthor"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Delete</a>
   </div>
 </div>

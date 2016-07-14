@@ -14,11 +14,15 @@ router.get('/books', function(req, res, next) {
   });
 });
 
+
 router.get('/books/:id', function(req, res, next) {
-  knex('book').join('book_author', 'book_id', 'book.id').join('author', 'author_id', 'author.id').select('book.title', 'book.genre', 'book.description', 'book.cover_url', 'book.id as book_id', 'author.id as author_id', 'author.first_name', 'author.last_name').where({
-    book_id: req.params.id}).first().then(function(book){
-    res.render('bookdetail', {book: book});
-  });
+  Promise.all([
+    knex('book').select('*', 'book.id as book_id').where({'book.id': req.params.id}).first(),
+    knex('author').join('book_author','author_id','author.id').select('author.id as author_id', 'author.first_name', 'author.last_name').where({
+      book_id: req.params.id})
+  ]).then(function(data){
+  res.render('bookdetail', {book: data[0], author: data[1]});
+});
 });
 
 router.get('/addBook', function(req, res, next){
@@ -45,23 +49,31 @@ router.get('/:id/editbook', function(req, res, next) {
 });
 
 router.get('/authors', function(req, res, next) {
-  knex('author').select().then(function(authors){
+  knex('book').join('book_author', 'book_id', 'book.id').join('author', 'author_id', 'author.id').select('book.title', 'book.genre', 'book.description', 'book.cover_url', 'book.id as book_id', 'author.id as author_id', 'author.first_name', 'author.last_name','author.portrait_url', 'author.biography').then(function(authors){
   res.render('authors', {authors: authors});
   });
 });
 
 router.get('/authors/:id', function(req, res, next) {
-  knex('author').where({id: req.params.id}).first().then(function(author) {
-    res.render('authordetail', {author: author});
-  });
+  Promise.all([
+    knex('author').select('*', 'author.id as author_id').where({'author.id': req.params.id}).first(),
+    knex('book').join('book_author','book_id','book.id').select('book.id as book_id', 'book.title').where({
+      author_id: req.params.id})
+  ]).then(function(data){
+  res.render('authordetail', {author: data[0], book: data[1]});
 });
+});
+
 
 router.get('/addAuthor', function(req, res, next){
   res.render('addauthor');
 });
 
+
 router.get('/:id/deleteauthor', function(req, res, next) {
-  knex('author').where({id: req.params.id}).first().then(function(author) {
+  knex('book').join('book_author', 'book_id', 'book.id').join('author', 'author_id', 'author.id').select('book.title','book.id as book_id', 'author.id as author_id', 'author.first_name', 'author.last_name','author.portrait_url', 'author.biography').where({
+    author_id: req.params.id}).first().then(function(author) {
+      console.log(author)
     res.render('deleteauthor', {author: author});
   });
 });
